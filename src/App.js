@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from "react-bootstrap/Navbar"
 import { HiArrowSmLeft } from "react-icons/hi"
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./components/Home"
 
 const App = () => (
@@ -13,12 +13,12 @@ const App = () => (
         Covid-19 Tracker
       </Navbar.Brand>
     </Navbar>
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         
       </Routes>
-    </BrowserRouter>
+    </Router>
 
   </main>
 );
