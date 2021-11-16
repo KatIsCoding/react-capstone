@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar"
 import { HiArrowSmLeft } from "react-icons/hi"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./components/Home"
+import Details from "./components/Details"
 
 const App = () => (
   <main>
@@ -15,7 +16,8 @@ const App = () => (
     </Navbar>
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/details/:countryId" element={<Details />}/>
         
       </Routes>
     </Router>
