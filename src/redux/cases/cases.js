@@ -1,34 +1,50 @@
 
 
-const GET_TODAY_CASES = 'redux/actions/GET_TODAY_CASES';
+const GET_CASES = 'redux/actions/GET_CASES';
 const GET_COUNTRY_DATA = 'redux/actions/GET_COUNTRY_DATA'
+const SET_SEARCH_QUERY = 'redux/actions/SET_SEARCH_QUERY'
+const CHANGE_DATE = 'redux/actions/CHANGE_DATE'
 const dateObj = new Date();
 
 const zeroPad = (num, places) => String(num).padStart(places, '0')
 export const today = `${dateObj.getFullYear()}-${zeroPad(dateObj.getMonth() + 1, 2)}-${zeroPad(dateObj.getDate(), 2)}`;
+export const convertDate = (date) => `${date.getFullYear()}-${zeroPad(date.getMonth() + 1, 2)}-${zeroPad(date.getDate(), 2)}`;
 
-const getCountryDataAction = (data) => ({type: GET_COUNTRY_DATA, payload: data})
 
-export const getCountryData = (countryId, date=today) => (dispatch) => 
-fetch(`https://api.covid19tracking.narrativa.com/api/${date}/country/${countryId}`)
-  .then(res => res.json())
-    .then(data => {dispatch(getCountryDataAction(data)); })                                        
+export const getCountryDataAction = (countryId) => ({type: GET_COUNTRY_DATA, payload: countryId})
 
 
 
 
-export const getTodayCasesFunction = () => (dispatch) => fetch(`https://api.covid19tracking.narrativa.com/api/${today}`)
+export const changeDate = (date) => ({type: CHANGE_DATE, payload: date})
+
+export const getCasesFunction = (date=today) => (dispatch) => fetch(`https://api.covid19tracking.narrativa.com/api/${date}`)
                                                                       .then(data => data.json())
-                                                                          .then(data => dispatch({ type: GET_TODAY_CASES, payload: data }));
+                                                                          .then(data => {dispatch(changeDate(date)); return dispatch({ type: GET_CASES, payload: data })});
 
-const initialState = {dates: {}, total:{}, countryData: {dates: {}, total: {}}};
+export const setSearchQuery = (query) => ({type: SET_SEARCH_QUERY, payload: query})                                                                        
+
+const initialState = {dates: {}, total:{}, countryData: {dates: {
+  [today]: {
+    countries: {
+      name: "",
+      source: "",
+      today_confirmed: 0,
+      today_deaths: 0,
+      today_recovered: 0,
+    }}
+}}, searchQuery: "", currentDate: new Date()};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_TODAY_CASES:
+    case GET_CASES:
       return { ...state, ...action.payload};
     case GET_COUNTRY_DATA:
-      return {...state, countryData: action.payload}
+      return {...state, countryData: Object.values(Object.values(state.dates)[0].countries).find(country => country.id === action.payload)};
+    case SET_SEARCH_QUERY:
+      return {...state, searchQuery: action.payload}
+    case CHANGE_DATE:
+      return {...state, currentDate: new Date(`${action.payload  } `)}
     default:
       return state
   }

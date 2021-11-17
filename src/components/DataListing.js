@@ -1,25 +1,32 @@
 import React from "react";
 import Card from "react-bootstrap/Card"
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getCountryData } from "../redux/cases/cases";
+import { useSelector } from "react-redux";
 
-export default function ListComponent({ dates }) {
-      const dispatch = useDispatch();
-      return Object.keys(dates).map(date => (
-          Object.keys(dates[date].countries).map(countryName => {
-            const countryObject = dates[date].countries[countryName]
-            return (
-            <Link to={`details/${countryObject.id}`} key={countryObject.id} class="dataList" onClick={() => {dispatch(getCountryData(countryObject.id))}}>
-            <Card style={{maxHeight: "179px"}}>
-              <Card.Body>
-                <Card.Title>{countryName}</Card.Title>
-                <Card.Subtitle>Confirmed Today: {countryObject.today_confirmed}</Card.Subtitle>
-                </Card.Body>
-            </Card>
-            </Link>)
-          })
-        ))
+const filterCountries = (dates, search) => {
+  if (!Object.keys(dates).length || !dates) return [];
+  const currentCountries = Object.values(Object.values(Object.values(dates)[0])[0]);
+  if (!search || search === "") return currentCountries;
+  return currentCountries.filter(country => country.name.toLowerCase().includes(search.toLowerCase()))
+}
+
+
+export default function ListComponent() {
+
+  const {dates, searchQuery} = useSelector(state => state);
+  return (filterCountries(dates, searchQuery).map(countryObj => {
+        const countryObject = countryObj
+        return (
+        <Link to={`details/${countryObject.id}`} key={countryObject.id} class="dataList" >
+        <Card style={{height: "124px", minWidth: "193px"}}>
+          <Card.Body>
+            <Card.Title>{countryObject.name}</Card.Title>
+            <Card.Subtitle>Confirmed Today: {countryObject.today_confirmed}</Card.Subtitle>
+            </Card.Body>
+        </Card>
+        </Link>)
+      })
+    );
     
   
 
