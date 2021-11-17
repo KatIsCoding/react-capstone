@@ -6,19 +6,28 @@ import { BrowserRouter as Router, Routes, Route ,useNavigate} from 'react-router
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./components/Home"
 import Details from "./components/Details"
-import { getCasesFunction } from "./redux/cases/cases";
+import { getCasesFunction, toggleBackButton } from "./redux/cases/cases";
 
 const NavigationBar = () => {
+  const { backButton } = useSelector(state => state);
+  const dispatch = useDispatch();
   const history = useNavigate();
+  const currentStyle = {display: "none"};
+  if (backButton) {
+    currentStyle.display = "block";
+  } else {
+    currentStyle.display = "none";
+  }
   return (
-  <Navbar bg="dark" variant="dark">
-      <HiArrowSmLeft className="navbar-brand" size={40} onClick={() => history(-1)}/>
-      <Navbar.Brand href="#home">
-        Covid-19 Tracker
-      </Navbar.Brand>
-    </Navbar>
-  )
-}
+    <Navbar bg="dark" variant="dark">
+        <HiArrowSmLeft style={currentStyle} className="navbar-brand" size={40} onClick={() => {history(-1); dispatch(toggleBackButton(toggleBackButton()))}}/>
+        <Navbar.Brand href="#home">
+          Covid-19 Tracker
+        </Navbar.Brand>
+      </Navbar>
+    )
+  }
+  
 
 
 const App = () => {
