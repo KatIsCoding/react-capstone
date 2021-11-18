@@ -15,6 +15,7 @@ export default function SearchBar(){
             type="text"
             placeholder="Search Country"
             name="searchCountry"
+            style={{textAlign: "center", border: "none"}}
         />
     </Form.Group>
     </Form>

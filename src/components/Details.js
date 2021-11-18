@@ -20,10 +20,11 @@ export default function CountryDetails() {
   }, [dispatch, countryId]) 
   
     return (
-      <Container key={countryId}>
-      <h1>Details of: {countryObject.name}</h1>
+      <Container key={countryId} style={{padding: 0}}>
+      <h1 style={{backgroundColor: "var(--main-color)", color: "white"}}>{countryObject.name}</h1>
       <ListGroup>
         <ListGroup.Item>Source: {countryObject.source}</ListGroup.Item>
+        <ListGroup.Item>Date: {countryObject.date}</ListGroup.Item>
         <ListGroup.Item>Confirmed Today: {countryObject.today_confirmed}</ListGroup.Item>
         <ListGroup.Item>Deaths Today: {countryObject.today_deaths}</ListGroup.Item>
         <ListGroup.Item>Recovered Today: {countryObject.today_recovered}</ListGroup.Item>
