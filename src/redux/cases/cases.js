@@ -4,6 +4,7 @@ const GET_CASES = 'redux/actions/GET_CASES';
 const GET_COUNTRY_DATA = 'redux/actions/GET_COUNTRY_DATA'
 const SET_SEARCH_QUERY = 'redux/actions/SET_SEARCH_QUERY'
 const CHANGE_DATE = 'redux/actions/CHANGE_DATE'
+const TOGGLE_BACK_BUTTON = "redux/actions/TOGGLE_BACK_BUTTON"
 const dateObj = new Date();
 
 const zeroPad = (num, places) => String(num).padStart(places, '0')
@@ -13,7 +14,7 @@ export const convertDate = (date) => `${date.getFullYear()}-${zeroPad(date.getMo
 
 export const getCountryDataAction = (countryId) => ({type: GET_COUNTRY_DATA, payload: countryId})
 
-
+export const toggleBackButton = () => ({type: TOGGLE_BACK_BUTTON})
 
 
 export const changeDate = (date) => ({type: CHANGE_DATE, payload: date})
@@ -33,7 +34,7 @@ const initialState = {dates: {}, total:{}, countryData: {dates: {
       today_deaths: 0,
       today_recovered: 0,
     }}
-}}, searchQuery: "", currentDate: new Date()};
+}}, searchQuery: "", currentDate: new Date(), backButton: false};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -45,6 +46,8 @@ export default (state = initialState, action) => {
       return {...state, searchQuery: action.payload}
     case CHANGE_DATE:
       return {...state, currentDate: new Date(`${action.payload  } `)}
+    case TOGGLE_BACK_BUTTON:
+      return {...state, backButton: !state.backButton}
     default:
       return state
   }
