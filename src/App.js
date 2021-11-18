@@ -21,7 +21,7 @@ const NavigationBar = () => {
   return (
     <Navbar className="navbar" variant="dark">
         <HiArrowSmLeft style={currentStyle} className="navbar-brand" size={40} onClick={() => {history(-1); dispatch(toggleBackButton(toggleBackButton()))}}/>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand>
           Covid-19 Tracker
         </Navbar.Brand>
       </Navbar>
