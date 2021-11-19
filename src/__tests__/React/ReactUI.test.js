@@ -1,4 +1,4 @@
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -7,7 +7,7 @@ import timemachine from 'timemachine';
 import { createStore, applyMiddleware } from 'redux';
 import fs from 'fs';
 import App from '../../App';
-import reducer, { convertDate } from '../../redux/cases/cases';
+import reducer from '../../redux/cases/cases';
 
 const getMockedData = () => {
   const data = fs.readFileSync('./src/__tests__/React/mockData.json', 'utf8');
@@ -64,16 +64,21 @@ describe('React Data rendering and accuracy tests', () => {
     expect(AfghanistanCard.length).toBe(1);
     AfghanistanCard[0].click();
 
-    const source = await findAllByText('Source: John Hopkins University');
-    const confirmations = await findAllByText('Confirmed Today: 156739');
-    date = await findAllByText(`Date: ${convertDate(Date())}`);
-    deaths = await findAllByText('Deaths Today: 7297');
-    recoveries = await findAllByText('Recovered Today: 82586');
+    const source = await findAllByTestId('source');
+    const confirmations = await findAllByTestId('confirmed');
+    date = await findAllByTestId('date');
+    deaths = await findAllByTestId('deaths');
+    recoveries = await findAllByTestId('recovered');
 
     expect(source.length).toBe(1);
+    expect(source[0].textContent.includes('John Hopkins University')).toBeTruthy();
     expect(date.length).toBe(1);
+    expect(date[0].textContent.includes('2021-11-15')).toBeTruthy();
     expect(confirmations.length).toBe(1);
+    expect(confirmations[0].textContent.includes('156739')).toBeTruthy();
     expect(deaths.length).toBe(1);
+    expect(deaths[0].textContent.includes('7297')).toBeTruthy();
     expect(recoveries.length).toBe(1);
+    expect(recoveries[0].textContent.includes('82586')).toBeTruthy();
   });
 });
