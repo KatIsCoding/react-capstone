@@ -7,12 +7,17 @@ import ListComponent from './DataListing';
 import SearchBar from './SearchCountry';
 import { getCasesFunction, convertDate } from '../redux/cases/cases';
 
+let loaded = false;
+
 export default function HomeComponent() {
   const dispatch = useDispatch();
   const { currentDate, total } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getCasesFunction());
+    if (!loaded) {
+      dispatch(getCasesFunction());
+      loaded = true;
+    }
   }, [dispatch]);
   return (
     <div>
