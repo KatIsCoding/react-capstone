@@ -11,6 +11,8 @@ This React Mobile App is used to keep track of all the data of Covid-19 from all
 ## Live Demo
 
 [Live Demo Link](https://katiscoding.github.io/react-capstone/)
+
+
 [Live Demo Video](https://www.loom.com/share/75d1790e909e430c89a046110bac33c4)
 
 ## Built With
