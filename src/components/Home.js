@@ -36,7 +36,8 @@ export default function HomeComponent(){
                               gridTemplateColumns: "auto auto",
                               justifyItems: "center",
                               justifyContent: "center",
-                              padding: 0}}>
+                              padding: 0,
+                              backgroundColor: "var(--main-color)"}}>
         <ListComponent />
       </Container>
     </div>

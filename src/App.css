@@ -69,5 +69,5 @@ body {
 }
 
 .dataList:nth-child(5n-4) .card{
-  background-color: rgba(67, 105, 178, 0.9);
+  background-color: rgb(53, 107, 207);
 }

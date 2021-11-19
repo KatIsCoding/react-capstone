@@ -19,7 +19,7 @@ export default function ListComponent() {
         const countryObject = countryObj
         return (
         <Link to={`details/${countryObject.id}`} key={countryObject.id} onClick={() => dispatch(toggleBackButton())} className="dataList" data-testid="data-item">
-        <Card style={{height: "124px", minWidth: "193px"}}>
+        <Card style={{height: "124px", width: "187px"}}>
           <Card.Body>
             <Card.Title>{countryObject.name}</Card.Title>
             <Card.Subtitle>Confirmed Today: {countryObject.today_confirmed}</Card.Subtitle>
