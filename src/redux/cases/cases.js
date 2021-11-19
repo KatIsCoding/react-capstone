@@ -1,8 +1,8 @@
 
 
-const GET_CASES = 'redux/actions/GET_CASES';
+export const GET_CASES = 'redux/actions/GET_CASES';
 const GET_COUNTRY_DATA = 'redux/actions/GET_COUNTRY_DATA'
-const SET_SEARCH_QUERY = 'redux/actions/SET_SEARCH_QUERY'
+export const SET_SEARCH_QUERY = 'redux/actions/SET_SEARCH_QUERY'
 const CHANGE_DATE = 'redux/actions/CHANGE_DATE'
 const TOGGLE_BACK_BUTTON = "redux/actions/TOGGLE_BACK_BUTTON"
 const dateObj = new Date();
