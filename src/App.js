@@ -32,7 +32,7 @@ const NavigationBar = () => {
 
 const App = () => (
   <main>
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
     <NavigationBar />
     
       <Routes>
