@@ -18,7 +18,7 @@ export default function ListComponent() {
   return (filterCountries(dates, searchQuery).map(countryObj => {
         const countryObject = countryObj
         return (
-        <Link to={`details/${countryObject.id}`} key={countryObject.id} onClick={() => dispatch(toggleBackButton())} class="dataList" >
+        <Link to={`details/${countryObject.id}`} key={countryObject.id} onClick={() => dispatch(toggleBackButton())} className="dataList" data-testid="data-item">
         <Card style={{height: "124px", minWidth: "193px"}}>
           <Card.Body>
             <Card.Title>{countryObject.name}</Card.Title>
