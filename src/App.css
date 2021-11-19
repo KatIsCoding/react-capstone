@@ -1,3 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --main-color: #4369b2;
+  --accent-color: black;
+  --main-font: 'Lato', sans-serif;
+}
+
 body {
   margin: 0;
+  font-family: var(--main-font);
+}
+
+.dataList {
+  text-decoration: none;
+  color: black;
+}
+
+.react-date-picker__clear-button {
+  display: none;
+}
+
+.react-date-picker__calendar-button {
+  display: none;
+}
+
+.datePicker {
+  width: 100%;
+  text-align: center;
+}
+
+.navbar {
+  background-color: var(--main-color);
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.generalData {
+  background-color: var(--main-color);
+  opacity: 0.9;
+  color: white;
+}
+
+.filterSection {
+  background-color: white;
+  opacity: 0.9;
+  color: black;
+  padding: 0;
+}
+
+.filterSection > form > div > input {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.filterSection > form > div > input::placeholder {
+  color: rgba(253, 253, 255, 0.5)
+}
+
+.filterSection > form > div > input:focus {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.dataList .card{
+  background-color: rgba(67, 105, 178, 1);
+  color: white;
+  border-radius: 0;
+}
+
+.dataList:nth-child(5n-4) .card{
+  background-color: rgb(53, 107, 207);
 }
