@@ -1,20 +1,17 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# React-Redux setup
+# Covid-19 Tracker
 
-This is a simple yet powerful React-Redux boilerplate for later use as a starting point in other projects. It derives from `create-react-app` with a few modifications, which include installing StyleLint, ESLint, and Bootstrap, removing unimportant files, and adding some content to the remaining files. It features a functional Counter component that implements Redux for state management, using `useSelector` and `useDispatch` hooks.
+This React Mobile App is used to keep track of all the data of Covid-19 from all countries, from any date
 
 ## Mobile
 
-![screenshot](./app_screenshot.png)
-
-## Desktop
-
-![screenshot](./app_screenshot-2.png)
+![screenshot](https://cdn.discordapp.com/attachments/637141086334222369/911054509281796106/unknown.png)
 
 ## Live Demo
 
-[Live Demo Link](https://dicodiaz.me/react-redux-setup/)
+[Live Demo Link](https://katiscoding.github.io/react-capstone/)
+[Live Demo Video](https://www.loom.com/share/75d1790e909e430c89a046110bac33c4)
 
 ## Built With
 
@@ -30,14 +27,8 @@ To get React and Redux up and running in another project, follow these simple st
 
 1. Clone the repository into your machine (Or download the .zip file and extract).
 2. Open the project's folder.
-3. Copy and paste all files and folders except app_screenshot.png, app_screenshot-2.png, MIT.md, and README.md into the other project's root folder.
-4. Run `npm install`
-5. Run `npm start`
-
-### Considerations
-
-- Intended only for use as a starting point in other projects. Do not copy and paste these files into more mature projects as this will overwrite your package.json and package-lock.json files.
-- This project also includes Bootstrap for styling.
+3. Run `npm install`
+4. Run `npm start`
 
 ### Setup
 
@@ -45,11 +36,11 @@ Follow the steps described before.
 
 ## Authors
 
-👤 **Dico Diaz Dussan**
+👤 **Fabrizio Gomez Ruiz**
 
-- GitHub: [@dicodiaz](https://github.com/dicodiaz)
-- Twitter: [@DicoDiaz1](https://twitter.com/DicoDiaz1)
-- LinkedIn: [Dico Diaz Dussan](https://www.linkedin.com/in/dico-diaz-dussan)
+- GitHub: [@KatIsCoding](https://github.com/KatIsCoding/)
+- Twitter: [@fabriziogr211](https://twitter.com/fabriziogr211)
+- LinkedIn: [Fabrizio Gomez Ruiz](https://www.linkedin.com/in/fabrizio-gr/)
 
 ## 🤝 Contributing
 
@@ -60,6 +51,10 @@ Feel free to check the [issues page](../../issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
+
+# Acknowledgements
+
+This webapp is based in the design of Nelson Sakwa on [Behance](https://www.behance.net/sakwadesignstudio)
 
 ## 📝 License
 
